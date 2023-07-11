@@ -1,0 +1,200 @@
+.cabecalho__menu-hamburguer {
+  width: 24px;
+  height: 24px;
+  background-image: url("../assets/Menu.svg");
+  background-repeat: no-repeat;
+  display: inline-block;
+
+  /* Colocando a img de menu no centro */
+  background-position: center;
+}
+
+.container__botao:checked ~.container__rotulo > .cabecalho__menu-hamburguer {
+  background-image: url("../assets/menu_black_24dp\ 1.svg");
+}
+
+.container__botao:checked ~.container__rotulo {
+  background: var(--azul-degrade);
+}
+
+.cabecalho {
+  background-color: var(--branco);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* colocando a lista em baixo, position relative na caixa pai para liberar o position absolute na caixa filho */
+  position: relative;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.container__botao {
+  /* Tirando o botão do checkbox de visualização, mas ainda continua funcionando */
+  display: none;
+}
+
+.container__img {
+  padding: 1em;
+}
+
+/* lista do menu */
+.lista-menu {
+  /* tirando a lista de vista */
+  display: none;
+
+  /* colocando a lista em baixo */
+  position: absolute;
+  top: 100%;
+
+  /* aumentando o tamanho da lista com o width dele */
+  width: 60vw;
+}
+
+/* :checked = quando for marcado */
+.container__botao:checked ~.lista-menu {
+  display: block;
+}
+
+.lista-menu__titulo, .lista-menu__item {
+  padding: 1em;
+  background-color: var(--branco);
+}
+
+.lista-menu__titulo {
+  color: var(--laranja);
+  font-weight: 700;
+}
+
+.lista-menu__link {
+  background: var(--azul-degrade);
+
+  /* deixando como letra maiúscula */
+  text-transform: uppercase;
+
+  /* para funcionar em outros navegadores */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* colocando a cor de background apenas no texto */
+  background-clip: text;
+}
+
+/* Tirando para a responsividade */
+.container__titulo, .opcoes, .container__texto {
+  display: none;
+}
+
+
+/* Reponsividade */
+/* OBG: max-width é ideal quando já temos o layout pronto para desktop e estamos querendo fazer a responsividade para dispositivos menores
+
+min-width é ideal quando já temos o layout pronto para mobile e estamos querendo fazer a responsividade para dispositivos maiores
+/
+/* Tablet */
+@media screen and (min-width: 1024px){
+  .container__titulo, .container__titulo--negrito {
+    font-family: var(--fonte-secundaria);
+    font-size: 30px;
+  }
+
+  .container__titulo {
+    font-weight: 400;
+
+    /* para fazer o titulo aparecer quando chegar no minimo de 1024px */
+    display: block;
+  }
+
+  .container__titulo--negrito {
+    font-weight: 700;
+  }
+
+  /* não precisa colocar display:block para a aparecer pois aqui já esta definindo como display:flex e já faz aparecer normalmente */
+  .opcoes {
+    display: flex;
+  }
+
+  .opcoes__item {
+    padding: 0 1em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .opcoes__item:hover {
+    background: var(--azul-degrade);
+  }
+
+  .opcoes__item:hover > .opcoes__link {
+    -webkit-text-fill-color: var(--branco);
+    text-decoration: none;
+  }
+
+  .opcoes__botao:hover ~.opcoes__rotulo > .opcoes__item {
+    background: var(--azul-degrade);
+    color: var(--branco);
+  }
+
+  .opcoes__link {
+    text-decoration: none;
+    color: var(--preto);
+  }
+
+  .container__img-transparente {
+    display: none;
+  }
+
+  .cabecalho__menu-hamburguer {
+    display: none;
+  }
+
+  .opcoes__botao:checked ~.lista-menu {
+    display: block;
+    width: auto;
+  }
+
+  .opcoes__botao {
+    display: none;
+  }
+
+  .opcoes__botao:checked ~.opcoes__rotulo > .opcoes__item {
+    background: var(--azul-degrade);
+    color: var(--branco);
+  }
+
+  .opcoes__item {
+    padding: 2em 1em;
+  }
+
+  .lista-menu__item:hover {
+    background: var(--azul-degrade);
+  }
+
+  .lista-menu__item:hover > .lista-menu__link {
+    -webkit-text-fill-color: var(--branco);
+    text-decoration: none;
+  }
+}
+
+@media screen and (min-width: 1728px) {
+  .container__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--preto);
+  }
+
+  .container__texto {
+    display: block;
+  }
+
+  .cabecalho {
+    padding: 0 2em;
+  }
+
+  .opcoes {
+    margin-right: auto;
+  }
+}
