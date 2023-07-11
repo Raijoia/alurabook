@@ -10,7 +10,7 @@
 }
 
 .container__botao:checked ~.container__rotulo > .cabecalho__menu-hamburguer {
-  background-image: url("../assets/menu_black_24dp\ 1.svg");
+  background-image: url("../assets/menu_black_24dp 1.svg");
 }
 
 .container__botao:checked ~.container__rotulo {
